@@ -30,7 +30,7 @@ In this phase, I deployed the web server in a private subnet and verified secure
 * **Private Web Server:** Launched an EC2 instance in `SRJ-Private-Subnet-1` with no public IP.
 * **NAT Gateway Validation:** Verified that the private instance can reach the internet for updates via the NAT Gateway.
 * **Web Services:** Installed and configured Apache HTTP server on the private instance.
-# Module 4: AWS 3-Tier Architecture Implementation (Web Tier)
+## Phase 4:: AWS 3-Tier Architecture Implementation (Web Tier)
 
 ## 1. Project Objective
 Deployment of a secure and highly available Web Tier. An Application Load Balancer (ALB) is used to route external HTTP traffic to an Apache Web Server hosted within a Private Subnet.
