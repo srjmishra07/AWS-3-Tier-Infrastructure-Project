@@ -13,3 +13,12 @@ In this phase, I established a secure and isolated network environment using a c
 
 ---
 *Status: Phase 1 Completed ✅*
+## 🛡️ Phase 2: Compute & Security
+In this phase, I deployed the entry point (Bastion Host) and configured security layers.
+
+### Key Implementation Details:
+* **Security Groups:**
+  - **SRJ-Bastion-SG:** Restricted access to SSH (Port 22) only from my specific local IP.
+  - **SRJ-Web-SG:** Configured to allow HTTP (Port 80) from the internet and SSH only from the Bastion Security Group.
+* **Key Management:** Generated a secure RSA key pair (`SRJ-Key.pem`) for encrypted access.
+* **Bastion Host:** Launched an Amazon Linux 2023 instance in the Public Subnet to act as a secure jump server.
