@@ -18,3 +18,8 @@
 - **Observed Behavior:** Error `client_loop: send disconnect: Connection reset`.
 - **Root Cause:** SSH session timed out due to inactivity.
 - **Resolution:** Re-initiated the SSH connection from the local terminal using the Agent Forwarding command (`ssh -A`).
+[Phase 5 - S3 Storage]
+- Issue: Private instance could not access S3 buckets.
+- Solution: Attached an IAM Role to the EC2 instance instead of using hardcoded access keys for security.
+- Issue: AWS CLI on Windows was not returning results.
+- Solution: Re-configured 'aws configure' with the correct region (ap-south-1) and valid IAM User credentials.
