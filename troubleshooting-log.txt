@@ -2,3 +2,19 @@
 - Issue: Private instances could not reach the internet for yum updates.
 - Solution: Created a Private Route Table and added a route for 0.0.0.0/0 pointing to the NAT Gateway ID.
 - Note: Ensured NAT Gateway was created in the Public Subnet and assigned an Elastic IP.
+# Troubleshooting Log: Module 4 (Web Tier & ALB)
+
+### Issue 1: Target Group Status - "Unused" / 503 Service Unavailable
+- **Observed Behavior:** ALB DNS URL returned a 503 error; Target Group showed instance as "Unused".
+- **Root Cause:** Availability Zone Mismatch. The EC2 instance was in 'ap-south-1c', but the ALB was not configured to route traffic to that specific zone.
+- **Resolution:** Modified ALB 'Network Mapping' to include the subnet corresponding to 'ap-south-1c'.
+
+### Issue 2: Connection Timed Out (Browser Access)
+- **Observed Behavior:** Browser failed to connect to the ALB DNS name.
+- **Root Cause:** Security Group Inbound rules on the Web Server were not permitting traffic from the Load Balancer.
+- **Resolution:** Added an Inbound Rule to 'SRJ-Web-SG' allowing HTTP (Port 80) traffic with the Source set to 'SRJ-ALB-SG'.
+
+### Issue 3: SSH Session Termination
+- **Observed Behavior:** Error `client_loop: send disconnect: Connection reset`.
+- **Root Cause:** SSH session timed out due to inactivity.
+- **Resolution:** Re-initiated the SSH connection from the local terminal using the Agent Forwarding command (`ssh -A`).
