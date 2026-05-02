@@ -1,0 +1,4 @@
+[Module 1 - Networking]
+- Issue: Private instances could not reach the internet for yum updates.
+- Solution: Created a Private Route Table and added a route for 0.0.0.0/0 pointing to the NAT Gateway ID.
+- Note: Ensured NAT Gateway was created in the Public Subnet and assigned an Elastic IP.
