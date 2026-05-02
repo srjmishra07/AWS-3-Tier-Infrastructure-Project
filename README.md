@@ -65,3 +65,14 @@ echo "<h1>Welcome to SRJ Cloud Project - Phase 3 Successful!</h1>" | sudo tee /v
 
 # Verify Service Status
 sudo systemctl status httpd
+## Phase 5: S3 Storage Integration (Linux & Windows)
+In this phase, I integrated AWS S3 for centralized storage and verified cross-platform access using IAM Roles and CLI.
+
+### ### Key Implementation Details:
+* **IAM Role for EC2:** Created an IAM Role with `AmazonS3FullAccess` and attached it to the Private Web Server.
+* **Linux Integration:** Verified S3 connectivity from the private instance using AWS CLI commands.
+* **Windows Integration:** Configured AWS CLI on the local machine using IAM User access keys.
+* **Data Verification:** Successfully uploaded and listed files across both platforms.
+
+---
+*Status: Phase 5 Completed *
