@@ -76,3 +76,14 @@ In this phase, I integrated AWS S3 for centralized storage and verified cross-pl
 
 ---
 *Status: Phase 5 Completed *
+## Phase 5: Shared File System (AWS EFS)
+In this phase, I implemented a scalable network file system (EFS) to allow shared data access across multiple platforms and instances.
+
+### ### Key Implementation Details:
+* **EFS Creation:** Deployed an Elastic File System within the custom VPC.
+* **Security Group Logic:** Configured 'SRJ-EFS-SG' to allow inbound NFS traffic (Port 2049) specifically from the Web Server Security Group.
+* **Linux Mounting:** Successfully mounted the EFS on the private instance using `amazon-efs-utils`.
+* **Cross-Platform Access:** Enabled 'Client for NFS' on Windows to verify shared storage connectivity.
+
+---
+*Status: Phase 6 Completed *
