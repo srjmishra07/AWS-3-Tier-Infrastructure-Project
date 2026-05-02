@@ -23,3 +23,8 @@
 - Solution: Attached an IAM Role to the EC2 instance instead of using hardcoded access keys for security.
 - Issue: AWS CLI on Windows was not returning results.
 - Solution: Re-configured 'aws configure' with the correct region (ap-south-1) and valid IAM User credentials.
+[Phase 6 - EFS Storage]
+- Issue: Mount command was hanging/timing out on the EC2 instance.
+- Solution: Verified that the EFS Security Group allows Port 2049 from the Web Server's Security Group.
+- Issue: Windows unable to recognize the 'mount' command for network drives.
+- Solution: Enabled the 'Services for NFS' feature in Windows Features settings to support the NFS protocol.
