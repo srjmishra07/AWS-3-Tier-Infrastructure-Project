@@ -134,3 +134,20 @@ Implemented a centralized file system to ensure data consistency across multiple
 
 ### Verification:
 Validated the active mount using `df -h`, confirming the remote file system is successfully mapped to the local web directory.
+## Phase 11: VPC Peering & Hybrid Networking
+Established secure, private communication between two distinct Virtual Private Clouds without traversing the public internet.
+
+### Infrastructure Architecture:
+* **Requester VPC:** `SRJ-Main-VPC` (10.0.0.0/16)
+* **Accepter VPC:** `SRJ-Dev-VPC` (172.16.0.0/16)
+* **Connectivity:** Created a VPC Peering Connection to bridge the 10.x and 172.x networks.
+
+### Implementation Steps:
+1. **Peering Setup:** Initiated and accepted the peering request within the AWS console.
+2. **Bi-directional Routing:** - Updated Main Route Tables to route `172.16.0.0/16` traffic via the Peering Connection.
+   - Updated Dev Route Tables to route `10.0.0.0/16` traffic via the Peering Connection.
+3. **Security Handshake:** Configured Security Groups in the Dev VPC to allow ICMP (Ping) traffic specifically from the Main VPC CIDR.
+
+### Verification:
+* Performed a successful connectivity test from a Private Instance in the Main VPC (10.0.3.21) to the Dev Instance (172.16.1.178).
+* Result: 0% packet loss and ultra-low latency (<1ms) over the private tunnel.
