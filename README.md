@@ -102,11 +102,15 @@ In this phase, I deployed a managed MySQL database in a private subnet and estab
 * **Initialized DB:** Created `srj_project_db` to store application metadata.
 * **Schema Design:** Created a `youtube_videos` table with automated ID incrementing and status tracking.
 * **Security Validation:** Confirmed that the RDS instance remains unreachable from the public internet, accepting connections only via the Private Subnet EC2 instance.
-## Phase 8: High Availability with Auto Scaling (ASG)
-Automated the server lifecycle to ensure the application remains viral-proof and self-healing.
+## Phase 8: High Availability & Secure Private Connectivity
+In this phase, I automated the infrastructure to be self-healing and viral-proof, while ensuring secure internet access for private instances.
 
 ### Key Implementation Details:
-* **Launch Template:** Created 'SRJ-Web-Template' defining AMI, Instance type (t2.micro), and Security Groups.
-* **User Data Scripting:** Bootstrapped new instances with Apache and MariaDB client automatically upon launch.
-* **ASG Configuration:** Set desired capacity to 2, ensuring high availability across multiple Private Subnets.
-* **Load Balancer Integration:** Linked ASG with the existing Target Group for automated traffic distribution.
+* **Launch Template ('SRJ-Web-Template'):** Defined the standard blueprint for web servers (AMI, t2.micro, SRJ-Key, and SRJ-Web-SG).
+* **Automated Bootstrapping:** Included a User Data script to automatically install Apache and MariaDB clients on every new instance launch.
+* **Auto Scaling Group (ASG):** Configured 'SRJ-ASG-Web' with a desired capacity of 2. Successfully tested "Self-Healing" by terminating an instance and observing ASG automatically launch a replacement.
+* **Secure Outbound Access:** Leveraged a NAT Gateway in the Public Subnet to provide Private Subnet instances with internet access (for updates/patches) without exposing them to the public web.
+* **Verification:** Confirmed 100% connectivity by performing a `ping google.com` from a Private instance (10.0.3.21).
+
+---
+*Status: Phase 8 Completed *
