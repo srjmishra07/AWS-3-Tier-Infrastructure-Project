@@ -49,3 +49,7 @@
 - Solution: Switched from 'Per-Instance Metrics' to 'By Auto Scaling Group' metrics for automated tracking of dynamic instances.
 - Observation: SNS subscription remained in 'Pending' state until manually confirmed via the verification email.
 - Logic: Understood that 'Desired Capacity' in ASG and CPU Alarms work together to maintain system stability.
+- Issue: 'mount -a' failed with "mount point does not exist" error.
+- Cause: The directory specified in /etc/fstab hadn't been created on the local filesystem.
+- Resolution: Executed 'sudo mkdir -p /var/www/html/shared-data' before mounting.
+- Observation: EFS mounts may show as '127.0.0.1:/' in df -h when using the amazon-efs-utils helper due to the local stunnel proxy.
