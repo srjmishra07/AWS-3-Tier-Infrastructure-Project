@@ -45,3 +45,7 @@
 - Root Cause: Missing route to the internet in the Private Route Table.
 - Fix: Added a 0.0.0.0/0 route pointing to the NAT Gateway in the Private Route Table. Verified with 'ping google.com'.
 - Observation: Observed 'Clipboard Buffer' artifacts in terminal during SQL execution; resolved by clearing the session.
+- Issue: CloudWatch graph not showing data for individual instances.
+- Solution: Switched from 'Per-Instance Metrics' to 'By Auto Scaling Group' metrics for automated tracking of dynamic instances.
+- Observation: SNS subscription remained in 'Pending' state until manually confirmed via the verification email.
+- Logic: Understood that 'Desired Capacity' in ASG and CPU Alarms work together to maintain system stability.
