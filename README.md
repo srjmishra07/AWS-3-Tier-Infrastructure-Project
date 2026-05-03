@@ -87,3 +87,14 @@ In this phase, I implemented a scalable network file system (EFS) to allow share
 
 ---
 *Status: Phase 6 Completed *
+## Phase 7: Relational Database Service (AWS RDS)
+In this phase, I deployed a managed MySQL database in a private subnet and established a secure connection from the web server.
+
+### Key Implementation Details:
+* **Subnet Grouping:** Created a DB Subnet Group across multiple Availability Zones using only Private Subnets for high availability and security.
+* **Security Layering:** Implemented 'SRJ-RDS-SG' with an inbound rule allowing MySQL traffic (Port 3306) exclusively from the Web Server's Security Group.
+* **Database Deployment:** Launched a MySQL 8.0 instance on the Free Tier template with Public Access disabled.
+* **Connectivity Validation:** Verified the connection from the Private EC2 instance using the MariaDB client via the RDS Endpoint.
+
+---
+*Status: Phase 7 Completed *
