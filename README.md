@@ -151,3 +151,14 @@ Established secure, private communication between two distinct Virtual Private C
 ### Verification:
 * Performed a successful connectivity test from a Private Instance in the Main VPC (10.0.3.21) to the Dev Instance (172.16.1.178).
 * Result: 0% packet loss and ultra-low latency (<1ms) over the private tunnel.
+## Phase 12: DNS Management with Route 53
+Transitioned from IP-based access to a professional DNS-based infrastructure using AWS Route 53.
+
+### Implementation Highlights:
+* **Private Hosted Zone:** Created `srj-cloud.internal` associated with the production VPC.
+* **DNS Records:** Configured an **A-Record** with **Alias** pointing `app.srj-cloud.internal` to the `SRJ-Main-ALB`.
+* **VPC Integration:** Enabled DNS Hostnames and DNS Support to allow internal name resolution.
+
+### Verification:
+* Validated using `nslookup` to confirm the hostname resolves to the Application Load Balancer's dynamic IP addresses.
+* Confirmed connectivity via `curl -I`, receiving a `200 OK` response from the Apache web server using the custom domain.
