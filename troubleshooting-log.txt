@@ -38,3 +38,10 @@
 - Resolution: Cleared the session and re-authenticated. Confirmed database integrity using 'SHOW TABLES'.
 - Issue: ERROR 1046 (No database selected).
 - Resolution: Always run the 'USE [database_name];' command after initiating a new MySQL session.
+[Phase 8 - Auto Scaling & Networking]
+- Issue: Newly launched ASG instances were not visible in the ALB Target Group.
+- Solution: Updated ASG settings to correctly associate with the existing Target Group during creation.
+- Issue: Private instances could not perform 'yum update' or reach external sites.
+- Root Cause: Missing route to the internet in the Private Route Table.
+- Fix: Added a 0.0.0.0/0 route pointing to the NAT Gateway in the Private Route Table. Verified with 'ping google.com'.
+- Observation: Observed 'Clipboard Buffer' artifacts in terminal during SQL execution; resolved by clearing the session.
