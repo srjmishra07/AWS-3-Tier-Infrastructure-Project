@@ -102,3 +102,11 @@ In this phase, I deployed a managed MySQL database in a private subnet and estab
 * **Initialized DB:** Created `srj_project_db` to store application metadata.
 * **Schema Design:** Created a `youtube_videos` table with automated ID incrementing and status tracking.
 * **Security Validation:** Confirmed that the RDS instance remains unreachable from the public internet, accepting connections only via the Private Subnet EC2 instance.
+## Phase 8: High Availability with Auto Scaling (ASG)
+Automated the server lifecycle to ensure the application remains viral-proof and self-healing.
+
+### Key Implementation Details:
+* **Launch Template:** Created 'SRJ-Web-Template' defining AMI, Instance type (t2.micro), and Security Groups.
+* **User Data Scripting:** Bootstrapped new instances with Apache and MariaDB client automatically upon launch.
+* **ASG Configuration:** Set desired capacity to 2, ensuring high availability across multiple Private Subnets.
+* **Load Balancer Integration:** Linked ASG with the existing Target Group for automated traffic distribution.
