@@ -33,3 +33,8 @@
 - Solution: Double-checked the master credentials and re-entered the correct password during the CLI login process.
 - Issue: Database not visible to the Web Server.
 - Solution: Ensured that 'Full Configuration' was used during creation to place the RDS instance in the correct custom VPC and private subnets.
+- Issue: Observed unexpected text in terminal buffer during SQL execution.
+- Root Cause: Clipboard buffer artifacts from the SSH terminal session.
+- Resolution: Cleared the session and re-authenticated. Confirmed database integrity using 'SHOW TABLES'.
+- Issue: ERROR 1046 (No database selected).
+- Resolution: Always run the 'USE [database_name];' command after initiating a new MySQL session.
