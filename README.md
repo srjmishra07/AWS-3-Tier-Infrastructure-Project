@@ -114,3 +114,11 @@ In this phase, I automated the infrastructure to be self-healing and viral-proof
 
 ---
 *Status: Phase 8 Completed *
+## Phase 9: CloudWatch Monitoring & SNS Alerts
+Implemented a comprehensive monitoring system to track infrastructure health and performance.
+
+### Key Implementation Details:
+* **CloudWatch Dashboard:** Created 'SRJ-Project-Monitor' to visualize CPU utilization of the Auto Scaling Group and RDS instance metrics.
+* **Aggregated Metrics:** Leveraged 'By Auto Scaling Group' metrics for a holistic view of cluster performance.
+* **Proactive Alerting:** Configured an SNS (Simple Notification Service) topic with email subscriptions for real-time notifications.
+* **CloudWatch Alarms:** Set a high CPU utilization threshold (70%) that triggers an automated email alert if the infrastructure is under heavy load.
