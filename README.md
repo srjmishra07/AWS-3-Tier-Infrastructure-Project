@@ -122,3 +122,15 @@ Implemented a comprehensive monitoring system to track infrastructure health and
 * **Aggregated Metrics:** Leveraged 'By Auto Scaling Group' metrics for a holistic view of cluster performance.
 * **Proactive Alerting:** Configured an SNS (Simple Notification Service) topic with email subscriptions for real-time notifications.
 * **CloudWatch Alarms:** Set a high CPU utilization threshold (70%) that triggers an automated email alert if the infrastructure is under heavy load.
+## Phase 10: Scalable Shared Storage (EFS)
+Implemented a centralized file system to ensure data consistency across multiple auto-scaling instances.
+
+### Technical Implementation:
+* **Storage Engine:** Utilized Amazon EFS (Elastic File System) for regional, highly available shared storage.
+* **Security Layer:** Configured `SRJ-EFS-SG` with an Inbound Rule for NFS (Port 2049), restricted only to the `SRJ-Web-SG` (Security Group Peering).
+* **Mount Point Creation:** Created a persistent directory structure at `/var/www/html/shared-data` across the fleet.
+* **Persistent Mounting:** Configured the Linux `/etc/fstab` file using the EFS Mount Helper and TLS encryption for secure, automated mounting upon system boot.
+* **Flags Used:** `_netdev` (ensures network is up before mounting) and `tls` (encryption in transit).
+
+### Verification:
+Validated the active mount using `df -h`, confirming the remote file system is successfully mapped to the local web directory.
