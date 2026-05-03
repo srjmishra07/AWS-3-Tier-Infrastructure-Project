@@ -28,3 +28,8 @@
 - Solution: Verified that the EFS Security Group allows Port 2049 from the Web Server's Security Group.
 - Issue: Windows unable to recognize the 'mount' command for network drives.
 - Solution: Enabled the 'Services for NFS' feature in Windows Features settings to support the NFS protocol.
+[Phase 7 - RDS Database]
+- Issue: Initial connection attempt returned 'Access Denied (1045)'.
+- Solution: Double-checked the master credentials and re-entered the correct password during the CLI login process.
+- Issue: Database not visible to the Web Server.
+- Solution: Ensured that 'Full Configuration' was used during creation to place the RDS instance in the correct custom VPC and private subnets.
