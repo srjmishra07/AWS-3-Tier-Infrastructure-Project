@@ -98,3 +98,7 @@ In this phase, I deployed a managed MySQL database in a private subnet and estab
 
 ---
 *Status: Phase 7 Completed *
+### Database Schema & Operations:
+* **Initialized DB:** Created `srj_project_db` to store application metadata.
+* **Schema Design:** Created a `youtube_videos` table with automated ID incrementing and status tracking.
+* **Security Validation:** Confirmed that the RDS instance remains unreachable from the public internet, accepting connections only via the Private Subnet EC2 instance.
