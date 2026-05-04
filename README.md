@@ -162,3 +162,14 @@ Transitioned from IP-based access to a professional DNS-based infrastructure usi
 ### Verification:
 * Validated using `nslookup` to confirm the hostname resolves to the Application Load Balancer's dynamic IP addresses.
 * Confirmed connectivity via `curl -I`, receiving a `200 OK` response from the Apache web server using the custom domain.
+## Phase 13: SSL/TLS Security & HTTPS Enforcement
+Secured the application infrastructure by implementing traffic encryption logic and automated redirection.
+
+### Implementation Highlights:
+* **HTTPS Listener:** Configured a secure listener on Port 443 for the Application Load Balancer.
+* **Force HTTPS Redirection:** Modified the default HTTP (Port 80) listener to issue a `301 Moved Permanently` response, redirecting all insecure traffic to HTTPS.
+* **Security Group Hardening:** Updated Load Balancer Security Groups to authorize inbound traffic on Port 443 (HTTPS).
+
+### Verification:
+* Executed `curl -I http://app.srj-cloud.internal` from within the VPC.
+* **Result:** Confirmed `HTTP/1.1 301 Moved Permanently` with the correct `Location: https://...` header, proving the backend logic is solid.
