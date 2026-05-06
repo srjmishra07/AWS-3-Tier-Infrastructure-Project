@@ -173,6 +173,16 @@ Secured the application infrastructure by implementing traffic encryption logic 
 ### Verification:
 * Executed `curl -I http://app.srj-cloud.internal` from within the VPC.
 * **Result:** Confirmed `HTTP/1.1 301 Moved Permanently` with the correct `Location: https://...` header, proving the backend logic is solid.
+## Phase 14: Hybrid Cloud Connectivity (Site-to-Site VPN)
+Bridged the gap between On-Premises infrastructure and AWS VPC using a secure VPN tunnel.
+
+### Key Components:
+* **Virtual Private Gateway (VGW):** Created and attached `SRJ-VGW` as the AWS-side VPN anchor.
+* **Customer Gateway (CGW):** Defined `SRJ-Office-CGW` using the on-premises public IP.
+* **VPN Tunneling:** Established a Site-to-Site VPN connection with static routing.
+* **Route Propagation:** Enabled automatic route propagation in Private Route Tables to ensure traffic flows seamlessly through the VGW.
+
+
 ## Phase 15: Serverless Backend Integration (Lambda & DynamoDB)
 Extended the 3-Tier architecture by integrating a serverless event-driven backend to handle API requests and persistent data storage.
 
