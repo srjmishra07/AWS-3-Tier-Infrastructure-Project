@@ -173,3 +173,11 @@ Secured the application infrastructure by implementing traffic encryption logic 
 ### Verification:
 * Executed `curl -I http://app.srj-cloud.internal` from within the VPC.
 * **Result:** Confirmed `HTTP/1.1 301 Moved Permanently` with the correct `Location: https://...` header, proving the backend logic is solid.
+## Phase 15: Serverless Backend Integration (Lambda & DynamoDB)
+Extended the 3-Tier architecture by integrating a serverless event-driven backend to handle API requests and persistent data storage.
+
+### ### Key Components:
+* **DynamoDB Table:** Provisioned `Project_Data_Table` as a NoSQL database to store high-velocity application data.
+* **AWS Lambda:** Deployed a Python 3.x function `Final_Backend_Function` to process incoming logic without managing servers.
+* **IAM Execution Role:** Configured `Lambda_DB_Access_Role` with granular permissions for DynamoDB and CloudWatch logging.
+* **Path-Based Routing:** Optimized the Application Load Balancer (ALB) to route `/api/*` traffic specifically to the Lambda Target Group.
